@@ -40,7 +40,7 @@
         left: 107px;
         top: 18px;
         
-        font-family: 'SF Pro Text';
+        font-family: 'SF Pro Text', sans-serif;
         font-style: normal;
         font-weight: 600;
         font-size: 15px;
@@ -63,10 +63,9 @@
         background: #3D8AF7;
         border-radius: 30px;
         color: #FFFFFF;
-        font-family: 'SF Pro Text';
+        font-family: 'SF Pro Text', sans-serif;
         border: none;
         margin-top: 9.14px;
-        font-family: 'SF Pro Text';
         font-style: normal;
         font-weight: 500;
         font-size: 18px;
@@ -91,7 +90,7 @@
         top: 1.8px;
         position: absolute;
 
-        font-family: 'SF Pro Text';
+        font-family: 'SF Pro Text', sans-serif;
         font-style: normal;
         font-weight: 600;
         font-size: 13px;
@@ -111,12 +110,12 @@
   
   .cardTitle {
     margin-top: 60px;
-    width: 62px;
+    width: 72px;
     height: 14px;
     left: 37px;
     top: 233px;
 
-    font-family: 'SF Pro Text';
+    font-family: 'SF Pro Text', sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 13px;
@@ -133,7 +132,7 @@
     left: 37px;
     margin-top: 6px;
 
-    font-family: 'SF Pro Text';
+    font-family: 'SF Pro Text', sans-serif;
     font-style: normal;
     font-weight: 600;
     font-size: 14px;
@@ -167,7 +166,7 @@
     left: 37px;
     top: 233px;
 
-    font-family: 'SF Pro Text';
+    font-family: 'SF Pro Text', sans-serif;;
     font-style: normal;
     font-weight: 400;
     font-size: 13px;
@@ -182,7 +181,7 @@
     left: 37px;
     margin-top: 6px;
     text-decoration: none;
-    font-family: 'SF Pro Text';
+    font-family: 'SF Pro Text', sans-serif;
     font-style: normal;
     font-weight: 600;
     font-size: 14px;
@@ -191,13 +190,17 @@
     -webkit-user-select: none; /* disable selection on iOS */
     user-select: none; /* disable selection on other platforms */
     cursor: default; /* remove default cursor on other platforms */
-    text-decoration: none !important;
+    text-decoration: none;
+    color: inherit;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none
     
     
 
-    letter-spacing: -0.165px;
-
-    color: #000000;
   }
   
   .NcopyIcon {
@@ -222,7 +225,7 @@
     left: 37px;
     top: 233px;
 
-    font-family: 'SF Pro Text';
+    font-family: 'SF Pro Text', sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 13px;
@@ -237,7 +240,7 @@
     left: 37px;
     margin-top: 6px;
 
-    font-family: 'SF Pro Text';
+    font-family: 'SF Pro Text', sans-serif;
     font-style: normal;
     font-weight: 600;
     font-size: 14px;
@@ -270,7 +273,7 @@
     left: 37px;
     top: 233px;
 
-    font-family: 'SF Pro Text';
+    font-family: 'SF Pro Text', sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 13px;
@@ -285,7 +288,7 @@
     left: 37px;
     margin-top: 6px;
 
-    font-family: 'SF Pro Text';
+    font-family: 'SF Pro Text', sans-serif;
     font-style: normal;
     font-weight: 600;
     font-size: 14px;
@@ -318,7 +321,7 @@
     left: 37px;
     top: 233px;
 
-    font-family: 'SF Pro Text';
+    font-family: 'SF Pro Text', sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 13px;
@@ -333,7 +336,7 @@
     left: 37px;
     margin-top: 6px;
 
-    font-family: 'SF Pro Text';
+    font-family: 'SF Pro Text', sans-serif;
     font-style: normal;
     font-weight: 600;
     font-size: 14px;
@@ -366,7 +369,7 @@
     left: 37px;
     top: 233px;
 
-    font-family: 'SF Pro Text';
+    font-family: 'SF Pro Text', sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 13px;
@@ -381,7 +384,7 @@
     left: 37px;
     margin-top: 6px;
 
-    font-family: 'SF Pro Text';
+    font-family: 'SF Pro Text', sans-serif;
     font-style: normal;
     font-weight: 600;
     font-size: 14px;
@@ -431,7 +434,7 @@
   .copyNotification p{
     top: 30px;
     font-size: 10.57px;
-    font-family: 'SF Pro Text';
+    font-family: 'SF Pro Text', sans-serif;
     font-style: normal;
     font-weight: 600;
     line-height: 10px;
@@ -455,7 +458,7 @@
   .NcopyNotification p{
     top: 23px;
     font-size: 10.57px;
-    font-family: 'SF Pro Text';
+    font-family: 'SF Pro Text', sans-serif;
     font-style: normal;
     font-weight: 600;
     line-height: 10px;
@@ -479,7 +482,7 @@
   .CcopyNotification p{
     top: 23px;
     font-size: 10.57px;
-    font-family: 'SF Pro Text';
+    font-family: 'SF Pro Text', sans-serif;
     font-style: normal;
     font-weight: 600;
     line-height: 10px;
@@ -503,7 +506,7 @@
   .EcopyNotification p{
     top: 23px;
     font-size: 10.57px;
-    font-family: 'SF Pro Text';
+    font-family: 'SF Pro Text', sans-serif;
     font-style: normal;
     font-weight: 600;
     line-height: 10px;
@@ -527,7 +530,7 @@
   .AcopyNotification p{
     top: 23px;
     font-size: 10.57px;
-    font-family: 'SF Pro Text';
+    font-family: 'SF Pro Text', sans-serif;
     font-style: normal;
     font-weight: 600;
     line-height: 10px;
@@ -551,7 +554,7 @@
   .ZcopyNotification p{
     top: 23px;
     font-size: 10.57px;
-    font-family: 'SF Pro Text';
+    font-family: 'SF Pro Text', sans-serif;
     font-style: normal;
     font-weight: 600;
     line-height: 10px;
