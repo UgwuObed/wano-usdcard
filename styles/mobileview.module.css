@@ -2,20 +2,23 @@
 
 @media only screen and (max-width: 600px) {
 
-      
+      .bodyC{
+        margin-top: 12px;
+      }
     .outerContainer{
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        margin-top: 159px;
+        top: 219px;
+        margin-bottom: 290;
     }
     
     .logoContainer {
         margin-bottom: 20px;
         z-index: 1;
         position: absolute;
-        top: 100px;
+        margin-top: 209px;
         left: 50%;
         transform: translate(-50%, -50%);
       }
@@ -32,7 +35,7 @@
         position: absolute;
         width: 313px;
         height: 467px;
-        top: 160.85px;
+        top: 120.95px;
     }
     
     .headUp h3 {
@@ -183,7 +186,7 @@
     height: 17px;
     left: 37px;
     margin-top: 6px;
-
+    text-decoration: none;
     font-family: 'SF Pro Text';
     font-style: normal;
     font-weight: 600;

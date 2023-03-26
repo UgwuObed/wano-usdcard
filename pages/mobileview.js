@@ -47,7 +47,7 @@ export default function ExpiredPage() {
             {copied && <div className={styles.NcopyNotification}><p>COPIED!</p></div>}
 
             <div className={styles.cvvTitle} id="card-cvv">
-              <label>Cvv</label>
+              <label>CVV</label>
             </div>
             <div className={styles.cardcvv} id="card-cvv-value">
               203
