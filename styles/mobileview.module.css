@@ -2,9 +2,6 @@
 
 @media only screen and (max-width: 600px) {
 
-      .bodyC{
-        margin-top: 12px;
-      }
     .outerContainer{
         display: flex;
         flex-direction: column;
@@ -15,10 +12,10 @@
     }
     
     .logoContainer {
-        margin-bottom: 20px;
+        margin-bottom: 70px;
         z-index: 1;
         position: absolute;
-        margin-top: 209px;
+        margin-top: 239px;
         left: 50%;
         transform: translate(-50%, -50%);
       }
