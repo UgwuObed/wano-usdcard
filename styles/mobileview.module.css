@@ -191,7 +191,9 @@
     -webkit-user-select: none; /* disable selection on iOS */
     user-select: none; /* disable selection on other platforms */
     cursor: default; /* remove default cursor on other platforms */
-    text-decoration: none; /* remove underline */
+    text-decoration: none !important;
+    
+    
 
     letter-spacing: -0.165px;
 
