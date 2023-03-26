@@ -190,7 +190,7 @@
     -webkit-user-select: none; /* disable selection on iOS */
     user-select: none; /* disable selection on other platforms */
     cursor: default; /* remove default cursor on other platforms */
-    text-decoration: none;
+    text-decoration: none !important;
     color: inherit;
     -webkit-touch-callout: none;
     -webkit-user-select: none;
