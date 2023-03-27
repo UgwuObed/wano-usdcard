@@ -39,7 +39,7 @@ export default function ExpiredPage() {
               <label>Card Number</label>
             </div>
             <div className={styles.cardNumber} id="card-number-value">
-            <a className={styles.phoneNumberLink} href="tel:123-456-7890"> 5001 5001 5001 5001</a>
+            <a className={styles.phoneNumberLink} href="tel:5001 5001 5001 5001"> 5001 5001 5001 5001</a>
             </div>
             <div className={styles.NcopyIcon} onClick={() => handleCopy('card-number-value')}>
               <img src="/img/copy.png" alt="Copy" />
