@@ -78,7 +78,7 @@
         width: 249px;
         height: 40px;
         margin-left: 25px;
-        top: 599px;
+        top: 586px;
         position: absolute;
         border-radius: 6px;
     }
@@ -176,7 +176,8 @@
     color: #494949;
   }
 
-  .cardNumber p{
+
+  .phoneNumberLink {
     height: 17px;
     left: 37px;
     margin-top: 6px;
@@ -186,22 +187,9 @@
     font-weight: 600;
     font-size: 14px;
     line-height: 17px;
-    -webkit-touch-callout: none; /* disable callout on iOS */
-    -webkit-user-select: none; /* disable selection on iOS */
-    user-select: none; /* disable selection on other platforms */
-    cursor: default; /* remove default cursor on other platforms */
-    text-decoration: none !important;
-    color: inherit;
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none
-    
-    
-
+    color: #000000;
   }
+
   
   .NcopyIcon {
     position: absolute;
