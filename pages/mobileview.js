@@ -96,7 +96,7 @@ export default function ExpiredPage() {
           <button className={styles.blueButton}>Close</button>
         </div>
         <div className={styles.warning}>
-          <p>This page will expire in 5 minutes</p>
+          <h1>This page will expire in 5 minutes</h1>
         </div>
       </div>
       </div>
