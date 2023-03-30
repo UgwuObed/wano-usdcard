@@ -88,6 +88,7 @@ export default function ExpiredPage() {
           <div className={styles.ZcopyIcon} onClick={() => handleCopy('card-zip-value')}>
             <img src="/img/copy.png" alt="Copy" />
             {copied && <div className={styles.ZcopyNotification}><p>COPIED!</p></div>}
+            
           </div>
 
         </div>
