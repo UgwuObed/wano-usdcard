@@ -1,9 +1,40 @@
 import styles from '../styles/mobileview.module.css';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+import ExpiredPage from '../pages/expiredpage'; 
+import { useRouter } from 'next/router'; 
 
-export default function ExpiredPage() {
+export default function mobileview() {
   const [copied, setCopied] = useState(false);
+  const [cardDetails, setCardDetails] = useState({});
+  const [expired, setExpired] = useState(false);
+
+  
+  const router = useRouter();
+  const link = router.asPath.split('/').pop();
+
+  useEffect(() => {
+    const fetchCardDetails = async () => {
+      try {
+        const response = await axios.get('https://wano-staging.herokuapp.com/card-issuing/view', {
+          headers: {
+            Authorization: 'Bearer wano-VDP4QHLCUW'
+          }
+        });
+        setCardDetails(response.data.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    
+    fetchCardDetails();
+    setTimeout(() => {
+      setExpired(true);
+    }, 300000);
+  }, []);
+  
+
   const handleCopy = (id) => {
     const text = document.querySelector(`#${id}`).textContent;
     navigator.clipboard.writeText(text);
@@ -12,6 +43,12 @@ export default function ExpiredPage() {
       setCopied(false);
     }, 3000);
   };
+
+  
+  if (expired) {
+    return <ExpiredPage />;
+  }
+
 
   return (
     <div className={styles.bodyC}>
@@ -28,7 +65,7 @@ export default function ExpiredPage() {
               <label>Card Name</label>
             </div>
             <div className={styles.cardName} id="card-name-value">
-              Henry Michael
+            {cardDetails.cardName}
             </div>
             <div className={styles.copyIcon} onClick={() => handleCopy('card-name-value')}>
               <img src="/img/copy.png" alt="Copy" />
@@ -39,7 +76,7 @@ export default function ExpiredPage() {
               <label>Card Number</label>
             </div>
             <div className={styles.cardNumber} id="card-number-value">
-            <a className={styles.phoneNumberLink} href="tel:5001 5001 5001 5001"> 5001 5001 5001 5001</a>
+            <a className={styles.phoneNumberLink} href="tel:5001 5001 5001 5001"> {cardDetails && cardDetails.cardNumber}</a>
             </div>
             <div className={styles.NcopyIcon} onClick={() => handleCopy('card-number-value')}>
               <img src="/img/copy.png" alt="Copy" />
@@ -50,7 +87,7 @@ export default function ExpiredPage() {
               <label>CVV</label>
             </div>
             <div className={styles.cardcvv} id="card-cvv-value">
-              203
+            {cardDetails && cardDetails.cvv}
             </div>
             <div className={styles.CcopyIcon} onClick={() => handleCopy('card-cvv-value')}>
               <img src="/img/copy.png" alt="Copy" />
@@ -62,7 +99,7 @@ export default function ExpiredPage() {
               <label>Expiry Date</label>
             </div>
             <div className={styles.cardExp} id="card-exp-value">
-              2026-04
+            {cardDetails && cardDetails.expiryDate}
             </div>
             <div className={styles.EcopyIcon} onClick={() => handleCopy('card-exp-value')}>
               <img src="/img/copy.png" alt="Copy" />
@@ -72,7 +109,7 @@ export default function ExpiredPage() {
             <label>Billing Address</label>
           </div>
           <div className={styles.cardAdd} id="card-add-value">
-            235 Chapman
+          {cardDetails && cardDetails.billingAddress}
           </div>
           <div className={styles.AcopyIcon} onClick={() => handleCopy('card-add-value')}>
             <img src="/img/copy.png" alt="Copy" />
@@ -83,7 +120,7 @@ export default function ExpiredPage() {
             <label>Zip Code</label>
           </div>
           <div className={styles.cardZip} id="card-zip-value">
-            94200
+          { cardDetails && cardDetails.zipCode}
           </div>
           <div className={styles.ZcopyIcon} onClick={() => handleCopy('card-zip-value')}>
             <img src="/img/copy.png" alt="Copy" />
@@ -104,7 +141,3 @@ export default function ExpiredPage() {
     </div>
   );
 }
-
-
-
-
