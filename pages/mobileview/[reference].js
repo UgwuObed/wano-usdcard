@@ -51,6 +51,7 @@ export default function mobileview() {
     const router = useRouter();
     const {reference} = router.query
     console.log(reference)
+    //::TODO GET the reference added to the path which would be your header value for every time the user tries to visit this page.
 
 
     useEffect(async () => {
@@ -63,6 +64,7 @@ export default function mobileview() {
         try {
             const response = await axios.get(localBase + '/card-issuing/view', {
                 headers: {
+                    //:TODO based on the reference, pass the header token like `Bearer ${reference}`
                     /**
                      *  http://localhost:3000/mobileview/wano-H1BMN4VA4X
                      *
@@ -87,6 +89,7 @@ export default function mobileview() {
                     Authorization: 'Bearer wano-H1BMN4VA4X'
                 }
             });
+            //::TODO The response generated would be returned and the example is above use that to know the object you need to reference to display the card details.
             setCardDetails(response.data.data);
         } catch (error) {
             console.error(error);
