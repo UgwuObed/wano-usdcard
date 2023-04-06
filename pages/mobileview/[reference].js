@@ -53,6 +53,15 @@ export default function mobileview() {
     console.log(reference)
     //::TODO GET the reference added to the path which would be your header value for every time the user tries to visit this page.
 
+    useEffect(() => {
+        const setAuthorizationToken = () => {
+          if (reference) {
+            axios.defaults.headers.common['Authorization'] = `Bearer ${reference}`;
+          }
+        };
+        setAuthorizationToken();
+      }, [reference]);
+      
 
     useEffect(async () => {
         const fetchCardDetails = async () => {
@@ -130,7 +139,7 @@ export default function mobileview() {
                             <label>Card Name</label>
                         </div>
                         <div className={styles.cardName} id="card-name-value">
-                            {cardDetails.card_number}
+                            {cardDetails.card.name}
                         </div>
                         <div className={styles.copyIcon} onClick={() => handleCopy('card-name-value')}>
                             <img src="/img/copy.png" alt="Copy"/>
@@ -142,7 +151,7 @@ export default function mobileview() {
                         </div>
                         <div className={styles.cardNumber} id="card-number-value">
                             <a className={styles.phoneNumberLink}
-                               href="tel:5001 5001 5001 5001"> {cardDetails && cardDetails.cardNumber}</a>
+                               href="tel:5001 5001 5001 5001"> {cardDetails.card.card_number}</a>
                         </div>
                         <div className={styles.NcopyIcon} onClick={() => handleCopy('card-number-value')}>
                             <img src="/img/copy.png" alt="Copy"/>
@@ -153,7 +162,7 @@ export default function mobileview() {
                             <label>CVV</label>
                         </div>
                         <div className={styles.cardcvv} id="card-cvv-value">
-                            {cardDetails && cardDetails.cvv}
+                            {cardDetails.card.cvv}
                         </div>
                         <div className={styles.CcopyIcon} onClick={() => handleCopy('card-cvv-value')}>
                             <img src="/img/copy.png" alt="Copy"/>
@@ -165,7 +174,7 @@ export default function mobileview() {
                             <label>Expiry Date</label>
                         </div>
                         <div className={styles.cardExp} id="card-exp-value">
-                            {cardDetails && cardDetails.expiryDate}
+                            {cardDetails.card.expiry}
                         </div>
                         <div className={styles.EcopyIcon} onClick={() => handleCopy('card-exp-value')}>
                             <img src="/img/copy.png" alt="Copy"/>
@@ -175,7 +184,7 @@ export default function mobileview() {
                             <label>Billing Address</label>
                         </div>
                         <div className={styles.cardAdd} id="card-add-value">
-                            {cardDetails && cardDetails.billingAddress}
+                            {cardDetails.card.address.street},{cardDetails.card.address.city},{cardDetails.card.address.state}
                         </div>
                         <div className={styles.AcopyIcon} onClick={() => handleCopy('card-add-value')}>
                             <img src="/img/copy.png" alt="Copy"/>
@@ -186,7 +195,7 @@ export default function mobileview() {
                             <label>Zip Code</label>
                         </div>
                         <div className={styles.cardZip} id="card-zip-value">
-                            {cardDetails && cardDetails.zipCode}
+                            {cardDetails.card.address.postal_code}
                         </div>
                         <div className={styles.ZcopyIcon} onClick={() => handleCopy('card-zip-value')}>
                             <img src="/img/copy.png" alt="Copy"/>
