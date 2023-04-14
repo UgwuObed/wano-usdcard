@@ -1,9 +1,10 @@
 import styles from '../../styles/mobileview.module.css';
 import Image from 'next/image';
-import {useState, useEffect} from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import ExpiredPage from '../expiredpage';
-import {useRouter} from 'next/router';
+import { useRouter } from 'next/router';
+import React from 'react';
 
 
 /**
@@ -38,76 +39,54 @@ import {useRouter} from 'next/router';
  * }
  * @returns {JSX.Element}
  */
-export default function mobileview() {
+
+export default function MobileView() {
     const [copied, setCopied] = useState(false);
     const [cardDetails, setCardDetails] = useState({});
     const [expired, setExpired] = useState(false);
 
-    const liveBASE = "https://api.wano.app"
-    const stagingBase = "https://wano-staging.herokuapp.com"
-    const localBase = "http://localhost:4444"
 
+    const liveBASE = 'https://api.wano.app';
+    const stagingBase = 'https://wano-staging.herokuapp.com';
+    const localBase = 'http://localhost:4444';
 
     const router = useRouter();
-    const {reference} = router.query
-    console.log(reference)
-    //::TODO GET the reference added to the path which would be your header value for every time the user tries to visit this page.
+    const { reference } = router.query;
+
 
     useEffect(() => {
         const setAuthorizationToken = () => {
-          if (reference) {
-            axios.defaults.headers.common['Authorization'] = `Bearer ${reference}`;
-          }
+            if (reference) {
+                axios.defaults.headers.common[
+                    'Authorization'
+                ] = `Bearer ${reference}`;
+            }
         };
         setAuthorizationToken();
-      }, [reference]);
-      
+    }, [reference]);
 
-    useEffect(async () => {
+    useEffect(() => {
         const fetchCardDetails = async () => {
-
+            try {
+                const response = await axios.get(`${localBase}/card-issuing/view`, {
+                    headers: {
+                        Authorization: `Bearer ${reference}`,
+                    },
+                });
+                setCardDetails(response.data.data);
+            } catch (error) {
+                console.error(error);
+            }
         };
 
-        fetchCardDetails();
-
-        try {
-            const response = await axios.get(localBase + '/card-issuing/view', {
-                headers: {
-                    //:TODO based on the reference, pass the header token like `Bearer ${reference}`
-                    /**
-                     *  http://localhost:3000/mobileview/wano-H1BMN4VA4X
-                     *
-                     *  figure out how to get 'wano-H1BMN4VA4X' from the url after load then make a request to the backend by passing it with the header like
-                     *  Bearer wano-H1BMN4VA4X,
-                     *
-                     *  I tried getting the reference, it only prints the result after a full load, but this is due to reacthook issues.
-                     *  You can check that out.
-                     *
-                     *  When the header is well passsed.
-                     *
-                     *  I added the response from the backend regarding card.
-                     *
-                     *  Keep in mind that you this reference expires.
-                     *
-                     *  http://wano-staging.herokuapp.com/docs
-                     *
-                     *  So check the docs on how to generate a new link after every 5 minute.
-                     *
-                     *  That's basically everything you are to do.
-                     */
-                    Authorization: 'Bearer wano-H1BMN4VA4X'
-                }
-            });
-            //::TODO The response generated would be returned and the example is above use that to know the object you need to reference to display the card details.
-            setCardDetails(response.data.data);
-        } catch (error) {
-            console.error(error);
+        if (reference) {
+            fetchCardDetails();
         }
+
         setTimeout(() => {
             setExpired(true);
         }, 300000);
-    }, []);
-
+    }, [reference]);
 
     const handleCopy = (id) => {
         const text = document.querySelector(`#${id}`).textContent;
@@ -118,17 +97,17 @@ export default function mobileview() {
         }, 3000);
     };
 
-
     if (expired) {
-        return <ExpiredPage/>;
+        return <ExpiredPage />;
     }
+
 
 
     return (
         <div className={styles.bodyC}>
             <div className={styles.outerContainer}>
                 <div className={styles.logoContainer}>
-                    <Image src="/img/Wanologo.png" width={200} height={50} alt="Company Logo"/>
+                <Image src="/img/Wanologo.png" width={200} height={50} alt="Company Logo" />
                 </div>
                 <div className={styles.expiredCont}>
                     <div className={styles.headUp}>
@@ -139,10 +118,10 @@ export default function mobileview() {
                             <label>Card Name</label>
                         </div>
                         <div className={styles.cardName} id="card-name-value">
-                            {cardDetails.card.name}
+                            {cardDetails.card?.name}
                         </div>
                         <div className={styles.copyIcon} onClick={() => handleCopy('card-name-value')}>
-                            <img src="/img/copy.png" alt="Copy"/>
+                            <img src="/img/copy.png" alt="Copy" />
                         </div>
                         {copied && <div className={styles.copyNotification}><p>COPIED!</p></div>}
 
@@ -150,11 +129,10 @@ export default function mobileview() {
                             <label>Card Number</label>
                         </div>
                         <div className={styles.cardNumber} id="card-number-value">
-                            <a className={styles.phoneNumberLink}
-                               href="tel:5001 5001 5001 5001"> {cardDetails.card.card_number}</a>
+                            {cardDetails?.card?.card_number}
                         </div>
                         <div className={styles.NcopyIcon} onClick={() => handleCopy('card-number-value')}>
-                            <img src="/img/copy.png" alt="Copy"/>
+                            <img src="/img/copy.png" alt="Copy" />
                         </div>
                         {copied && <div className={styles.NcopyNotification}><p>COPIED!</p></div>}
 
@@ -162,10 +140,10 @@ export default function mobileview() {
                             <label>CVV</label>
                         </div>
                         <div className={styles.cardcvv} id="card-cvv-value">
-                            {cardDetails.card.cvv}
+                            {cardDetails?.card?.cvv}
                         </div>
                         <div className={styles.CcopyIcon} onClick={() => handleCopy('card-cvv-value')}>
-                            <img src="/img/copy.png" alt="Copy"/>
+                            <img src="/img/copy.png" alt="Copy" />
                         </div>
                         {copied && <div className={styles.CcopyNotification}><p>COPIED!</p></div>}
 
@@ -174,20 +152,20 @@ export default function mobileview() {
                             <label>Expiry Date</label>
                         </div>
                         <div className={styles.cardExp} id="card-exp-value">
-                            {cardDetails.card.expiry}
+                            {cardDetails?.card?.expiry}
                         </div>
                         <div className={styles.EcopyIcon} onClick={() => handleCopy('card-exp-value')}>
-                            <img src="/img/copy.png" alt="Copy"/>
+                            <img src="/img/copy.png" alt="Copy" />
                             {copied && <div className={styles.EcopyNotification}><p>COPIED!</p></div>}
                         </div>
                         <div className={styles.addTitle} id="card-add">
                             <label>Billing Address</label>
                         </div>
                         <div className={styles.cardAdd} id="card-add-value">
-                            {cardDetails.card.address.street},{cardDetails.card.address.city},{cardDetails.card.address.state}
+                            {cardDetails?.card?.address.street},{cardDetails?.card?.address.city},{cardDetails?.card?.address.state}
                         </div>
                         <div className={styles.AcopyIcon} onClick={() => handleCopy('card-add-value')}>
-                            <img src="/img/copy.png" alt="Copy"/>
+                            <img src="/img/copy.png" alt="Copy" />
                             {copied && <div className={styles.AcopyNotification}><p>COPIED!</p></div>}
                         </div>
 
@@ -195,10 +173,10 @@ export default function mobileview() {
                             <label>Zip Code</label>
                         </div>
                         <div className={styles.cardZip} id="card-zip-value">
-                            {cardDetails.card.address.postal_code}
+                            {cardDetails?.card?.address.postal_code}
                         </div>
                         <div className={styles.ZcopyIcon} onClick={() => handleCopy('card-zip-value')}>
-                            <img src="/img/copy.png" alt="Copy"/>
+                            <img src="/img/copy.png" alt="Copy" />
                             {copied && <div className={styles.ZcopyNotification}><p>COPIED!</p></div>}
 
                         </div>
