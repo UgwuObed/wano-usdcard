@@ -20,6 +20,10 @@
     "react": "^18.2.0",
     "react-device-detect": "^2.2.3",
     "react-dom": "^18.2.0",
-    "typescript": "5.0.2"
+    "typescript": "5.0.2",
+    "ua-parser-js": "^0.7.35"
+  },
+  "devDependencies": {
+    "modernizr": "^3.12.0"
   }
 }
