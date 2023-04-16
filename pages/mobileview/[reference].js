@@ -58,7 +58,7 @@ export default function MobileView() {
 
 
     const instance = axios.create({
-        baseURL: 'https://wano-staging.herokuapp.com',
+        baseURL: 'http://wano-staging.herokuapp.com/card-issuing',
       });
 
       
@@ -91,7 +91,7 @@ export default function MobileView() {
     useEffect(() => {
         const fetchCardDetails = async () => {
             try {
-                const response = await axios.get(`${stagingBase}/card-issuing/view`, {
+                const response = await axios.get(`${stagingBase}/card-issuing`, {
                     headers: {
                         Authorization: `Bearer 447813459633`,
                     },
@@ -152,7 +152,7 @@ export default function MobileView() {
                             <label>Card Number</label>
                         </div>
                         <div className={styles.cardNumber} id="card-number-value">
-                            {cardDetails?.card?.card_number}
+                            {cardDetails.card?.card_number}
                         </div>
                         <div className={styles.NcopyIcon} onClick={() => handleCopy('card-number-value')}>
                             <img src="/img/copy.png" alt="Copy" />
@@ -163,7 +163,7 @@ export default function MobileView() {
                             <label>CVV</label>
                         </div>
                         <div className={styles.cardcvv} id="card-cvv-value">
-                            {cardDetails?.card?.cvv}
+                            {cardDetails.card?.cvv}
                         </div>
                         <div className={styles.CcopyIcon} onClick={() => handleCopy('card-cvv-value')}>
                             <img src="/img/copy.png" alt="Copy" />
@@ -175,7 +175,7 @@ export default function MobileView() {
                             <label>Expiry Date</label>
                         </div>
                         <div className={styles.cardExp} id="card-exp-value">
-                            {cardDetails?.card?.expiry}
+                            {cardDetails.card?.expiry}
                         </div>
                         <div className={styles.EcopyIcon} onClick={() => handleCopy('card-exp-value')}>
                             <img src="/img/copy.png" alt="Copy" />
@@ -185,7 +185,7 @@ export default function MobileView() {
                             <label>Billing Address</label>
                         </div>
                         <div className={styles.cardAdd} id="card-add-value">
-                            {cardDetails?.card?.address.street},{cardDetails?.card?.address.city},{cardDetails?.card?.address.state}
+                            {cardDetails.card?.address.street},{cardDetails?.card?.address.city},{cardDetails?.card?.address.state}
                         </div>
                         <div className={styles.AcopyIcon} onClick={() => handleCopy('card-add-value')}>
                             <img src="/img/copy.png" alt="Copy" />
@@ -196,7 +196,7 @@ export default function MobileView() {
                             <label>Zip Code</label>
                         </div>
                         <div className={styles.cardZip} id="card-zip-value">
-                            {cardDetails?.card?.address.postal_code}
+                            {cardDetails.card?.address.postal_code}
                         </div>
                         <div className={styles.ZcopyIcon} onClick={() => handleCopy('card-zip-value')}>
                             <img src="/img/copy.png" alt="Copy" />

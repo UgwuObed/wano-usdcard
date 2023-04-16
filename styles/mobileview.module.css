@@ -133,7 +133,6 @@
     height: 17px;
     left: 37px;
     margin-top: 6px;
-
     font-family: 'SF Pro Text', sans-serif;
     font-style: normal;
     font-weight: 600;
@@ -180,7 +179,7 @@
   }
 
 
-  .phoneNumberLink {
+  .cardNumber {
     height: 17px;
     left: 37px;
     margin-top: 6px;
@@ -197,7 +196,7 @@
   .NcopyIcon {
     position: absolute;
     left: 294px;
-    top: 157px;
+    top: 159px;
   }
 
   .NcopyIcon img {
@@ -246,7 +245,7 @@
   .CcopyIcon {
     position: absolute;
     left: 294px;
-    top: 227px;
+    top: 232px;
   }
 
   .CcopyIcon img {
@@ -277,8 +276,7 @@
   .cardExp{
     height: 17px;
     left: 37px;
-    margin-top: 6px;
-
+    margin-top: 6.7px;
     font-family: 'SF Pro Text', sans-serif;
     font-style: normal;
     font-weight: 600;
@@ -294,7 +292,7 @@
   .EcopyIcon {
     position: absolute;
     left: 294px;
-    top: 300px;
+    top: 307px;
   }
 
   .EcopyIcon img {
@@ -325,8 +323,7 @@
   .cardAdd{
     height: 17px;
     left: 37px;
-    margin-top: 6px;
-
+    margin-top: 6.7px;
     font-family: 'SF Pro Text', sans-serif;
     font-style: normal;
     font-weight: 600;
@@ -342,7 +339,7 @@
   .AcopyIcon {
     position: absolute;
     left: 294px;
-    top: 377px;
+    top: 383px;
   }
 
   .AcopyIcon img {
@@ -373,7 +370,7 @@
   .cardZip{
     height: 17px;
     left: 37px;
-    margin-top: 6px;
+    margin-top: 6.7px;
 
     font-family: 'SF Pro Text', sans-serif;
     font-style: normal;
@@ -390,7 +387,7 @@
   .ZcopyIcon {
     position: absolute;
     left: 294px;
-    top: 454px;
+    top: 452px;
   }
 
   .ZcopyIcon img {
