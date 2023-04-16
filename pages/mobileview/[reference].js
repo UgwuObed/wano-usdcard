@@ -63,27 +63,24 @@ export default function MobileView() {
 
       
 
-instance.interceptors.request.use((config) => {
+      instance.interceptors.request.use((config) => {
     const reference = localStorage.getItem('reference');
   
     if (reference) {
-      config.headers.Authorization = `Bearer wano-H1BMN4VA4X`;
+      config.headers.Authorization = `Bearer 447813459633`;
     }
   
     return config;
   });
   
  
-  instance.get('/card-issuing/view').then((response) => {
-    console.log(response.data);
-  });
 
     useEffect(() => {
         const setAuthorizationToken = () => {
             if (reference) {
                 axios.defaults.headers.common[
                     'Authorization'
-                ] = `Bearer ${reference}`;
+                ] = `Bearer 447813459633`;
             }
         };
         setAuthorizationToken();
@@ -96,7 +93,7 @@ instance.interceptors.request.use((config) => {
             try {
                 const response = await axios.get(`${stagingBase}/card-issuing/view`, {
                     headers: {
-                        Authorization: `Bearer ${reference}`,
+                        Authorization: `Bearer 447813459633`,
                     },
                 });
                 setCardDetails(response.data.data);
@@ -124,16 +121,10 @@ instance.interceptors.request.use((config) => {
     };
 
 
-
-
-
     if (expired) {
         return <ExpiredPage />;
     }
 
-    if (!reference) {
-        return <UnauthorizedPage />;
-      }
 
     return (
         <div className={styles.bodyC}>
