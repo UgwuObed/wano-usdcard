@@ -67,7 +67,7 @@ export default function MobileView() {
     const reference = localStorage.getItem('reference');
   
     if (reference) {
-      config.headers.Authorization = `Bearer 447813459633`;
+      config.headers.Authorization = `Bearer `+ reference;
     }
   
     return config;
@@ -80,7 +80,7 @@ export default function MobileView() {
             if (reference) {
                 axios.defaults.headers.common[
                     'Authorization'
-                ] = `Bearer 447813459633`;
+                ] = `Bearer `+ reference;
             }
         };
         setAuthorizationToken();
@@ -91,9 +91,9 @@ export default function MobileView() {
     useEffect(() => {
         const fetchCardDetails = async () => {
             try {
-                const response = await axios.get(`${liveBASE}/card-issuing`, {
+                const response = await axios.get(`${liveBASE}/card-issuing/view`, {
                     headers: {
-                        Authorization: `Bearer 447813459633`,
+                        Authorization: `Bearer `+reference,
                     },
                 });
                 setCardDetails(response.data.data);
