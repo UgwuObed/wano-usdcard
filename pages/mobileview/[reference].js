@@ -91,7 +91,7 @@ export default function MobileView() {
     useEffect(() => {
         const fetchCardDetails = async () => {
             try {
-                const response = await axios.get(`${liveBase}/card-issuing`, {
+                const response = await axios.get(`${liveBASE}/card-issuing`, {
                     headers: {
                         Authorization: `Bearer 447813459633`,
                     },
