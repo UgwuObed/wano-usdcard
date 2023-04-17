@@ -58,7 +58,7 @@ export default function MobileView() {
 
 
     const instance = axios.create({
-        baseURL: 'http://wano-staging.herokuapp.com/card-issuing',
+        baseURL: 'https://api.wano.app',
       });
 
       
@@ -91,7 +91,7 @@ export default function MobileView() {
     useEffect(() => {
         const fetchCardDetails = async () => {
             try {
-                const response = await axios.get(`${stagingBase}/card-issuing`, {
+                const response = await axios.get(`${liveBase}/card-issuing`, {
                     headers: {
                         Authorization: `Bearer 447813459633`,
                     },
