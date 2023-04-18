@@ -45,6 +45,8 @@ export default function MobileView() {
   const [cardDetails, setCardDetails] = useState({});
   const [expired, setExpired] = useState(false);
 
+
+
   const liveBASE = 'https://api.wano.app';
   const stagingBase = 'https://wano-staging.herokuapp.com';
   const localBase = 'http://localhost:4444';
@@ -97,7 +99,7 @@ export default function MobileView() {
 
     setTimeout(() => {
         setExpired(true);
-    }, 300000);
+    }, 200000);
 }, [reference]);
 
 
@@ -108,6 +110,10 @@ export default function MobileView() {
     setTimeout(() => {
       setCopied(false);
     }, 3000);
+  };
+
+  const handleClose = () => {
+    setExpired(true);
   };
 
   if (expired) {
@@ -199,7 +205,7 @@ export default function MobileView() {
     <button className={styles.blueButton} onClick={() => { 
         window.location.href = "https://wa.me/message/7PGM267HGLHNG1";
         setTimeout(() => {
-            window.close();
+            setExpired(true);
         }, 200); 
     }}>Close</button>
 </div>
