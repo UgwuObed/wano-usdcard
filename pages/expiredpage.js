@@ -13,10 +13,11 @@ export default function ExpiredPage() {
           <p>Return to WhatsApp and create a new card link</p>
         </div>
         <div className={styles.buttonContainer}>
-          <a href="https://wa.me/message/7PGM267HGLHNG1">
-            <button className={styles.blueButton}>Okay</button>
-            </a>
-        </div>
+    <button className={styles.blueButton} onClick={() => { 
+        window.close();
+        window.location.href = "https://wa.me/message/7PGM267HGLHNG1";
+    }}>Close</button>
+</div>
       </div>
     </div>
   );

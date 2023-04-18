@@ -202,11 +202,12 @@ export default function MobileView() {
                     </div>
 
                     <div className={styles.buttonContainer}>
-            <a href="https://wa.me/message/7PGM267HGLHNG1">
-                <button className={styles.blueButton}>Close</button>
-            </a>
+    <button className={styles.blueButton} onClick={() => { 
+        window.close();
+        window.location.href = "https://wa.me/message/7PGM267HGLHNG1";
+    }}>Close</button>
 </div>
-                    <div className={styles.warning}>
+            <div className={styles.warning}>
                         <h1>This page will expire in 5 minutes</h1>
                     </div>
                 </div>
