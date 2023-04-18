@@ -95,17 +95,11 @@ export default function MobileView() {
       fetchCardDetails();
     }
 
-    const isExpired = localStorage.getItem('expired') === 'true';
-
-    if (isExpired) {
-      setExpired(true);
-    } else {
-      setTimeout(() => {
-        localStorage.setItem('expired', 'true');
+    setTimeout(() => {
         setExpired(true);
-      }, 300000);
-    }
-  }, [reference]);
+    }, 300000);
+}, [reference]);
+
 
   const handleCopy = (id) => {
     const text = document.querySelector(`#${id}`).textContent;
@@ -206,7 +200,7 @@ export default function MobileView() {
         window.location.href = "https://wa.me/message/7PGM267HGLHNG1";
         setTimeout(() => {
             window.close();
-        }, 500); 
+        }, 200); 
     }}>Close</button>
 </div>
             <div className={styles.warning}>
