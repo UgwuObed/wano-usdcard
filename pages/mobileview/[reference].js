@@ -4,11 +4,8 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import ExpiredPage from '../expiredpage';
 import { useRouter } from 'next/router';
-import ReactDOM from 'react-dom';
 import UnauthorizedPage from '../unauthorizedpage';
 import React from 'react';
-
-
 
 /**
  * {
@@ -44,86 +41,84 @@ import React from 'react';
  */
 
 export default function MobileView() {
-    const [copied, setCopied] = useState(false);
-    const [cardDetails, setCardDetails] = useState({});
-    const [expired, setExpired] = useState(false);
+  const [copied, setCopied] = useState(false);
+  const [cardDetails, setCardDetails] = useState({});
+  const [expired, setExpired] = useState(false);
 
+  const liveBASE = 'https://api.wano.app';
+  const stagingBase = 'https://wano-staging.herokuapp.com';
+  const localBase = 'http://localhost:4444';
 
-    const liveBASE = 'https://api.wano.app';
-    const stagingBase = 'https://wano-staging.herokuapp.com';
-    const localBase = 'http://localhost:4444';
+  const router = useRouter();
+  const { reference } = router.query;
 
-    const router = useRouter();
-    const { reference } = router.query;
+  const instance = axios.create({
+    baseURL: 'https://api.wano.app',
+  });
 
-
-    const instance = axios.create({
-        baseURL: 'https://api.wano.app',
-      });
-
-      
-
-      instance.interceptors.request.use((config) => {
+  instance.interceptors.request.use((config) => {
     const reference = localStorage.getItem('reference');
-  
+
     if (reference) {
-      config.headers.Authorization = `Bearer `+ reference;
+      config.headers.Authorization = `Bearer ` + reference;
     }
-  
+
     return config;
   });
-  
- 
 
-    useEffect(() => {
-        const setAuthorizationToken = () => {
-            if (reference) {
-                axios.defaults.headers.common[
-                    'Authorization'
-                ] = `Bearer `+ reference;
-            }
-        };
-        setAuthorizationToken();
-    }, [reference]);
+  useEffect(() => {
+    const setAuthorizationToken = () => {
+      if (reference) {
+        axios.defaults.headers.common[
+          'Authorization'
+        ] = `Bearer ` + reference;
+      }
+    };
+    setAuthorizationToken();
+  }, [reference]);
 
-
-
-    useEffect(() => {
-        const fetchCardDetails = async () => {
-            try {
-                const response = await axios.get(`${liveBASE}/card-issuing/view`, {
-                    headers: {
-                        Authorization: `Bearer `+reference,
-                    },
-                });
-                setCardDetails(response.data.data);
-            } catch (error) {
-                console.error(error);
-            }
-        };
-
-        if (reference) {
-            fetchCardDetails();
-        }
-
-        setTimeout(() => {
-            setExpired(true);
-        }, 300000);
-    }, [reference]);
-
-    const handleCopy = (id) => {
-        const text = document.querySelector(`#${id}`).textContent;
-        navigator.clipboard.writeText(text);
-        setCopied(true);
-        setTimeout(() => {
-            setCopied(false);
-        }, 3000);
+  useEffect(() => {
+    const fetchCardDetails = async () => {
+      try {
+        const response = await axios.get(`${liveBASE}/card-issuing/view`, {
+          headers: {
+            Authorization: `Bearer ` + reference,
+          },
+        });
+        setCardDetails(response.data.data);
+      } catch (error) {
+        console.error(error);
+      }
     };
 
-
-    if (expired) {
-        return <ExpiredPage />;
+    if (reference) {
+      fetchCardDetails();
     }
+
+    const isExpired = localStorage.getItem('expired') === 'true';
+
+    if (isExpired) {
+      setExpired(true);
+    } else {
+      setTimeout(() => {
+        localStorage.setItem('expired', 'true');
+        setExpired(true);
+      }, 300000);
+    }
+  }, [reference]);
+
+  const handleCopy = (id) => {
+    const text = document.querySelector(`#${id}`).textContent;
+    navigator.clipboard.writeText(text);
+    setCopied(true);
+    setTimeout(() => {
+      setCopied(false);
+    }, 3000);
+  };
+
+  if (expired) {
+    return <ExpiredPage />;
+  }
 
 
     return (
