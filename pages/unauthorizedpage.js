@@ -15,7 +15,9 @@ export default function unauthorized() {
           </div>
         </div>
         <div className={styles.buttonContainer}>
+        <a href="https://wa.me/message/7PGM267HGLHNG1">
           <button className={styles.blueButton}>Okay</button>
+          </a>
         </div>
       </div>
     </div>
