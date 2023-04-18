@@ -203,8 +203,10 @@ export default function MobileView() {
 
                     <div className={styles.buttonContainer}>
     <button className={styles.blueButton} onClick={() => { 
-        window.close();
         window.location.href = "https://wa.me/message/7PGM267HGLHNG1";
+        setTimeout(() => {
+            window.close();
+        }, 500); 
     }}>Close</button>
 </div>
             <div className={styles.warning}>

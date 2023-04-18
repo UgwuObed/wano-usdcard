@@ -12,10 +12,13 @@ export default function ExpiredPage() {
           <h3>This page has expired</h3>
           <p>Return to WhatsApp and create a new card link</p>
         </div>
-        <div className={styles.buttonContainer}>
+
+<div className={styles.buttonContainer}>
     <button className={styles.blueButton} onClick={() => { 
-        window.close();
         window.location.href = "https://wa.me/message/7PGM267HGLHNG1";
+        setTimeout(() => {
+            window.close();
+        }, 500); 
     }}>Close</button>
 </div>
       </div>
